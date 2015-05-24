@@ -42,3 +42,8 @@
     height: 100%;
     width: 100%;
 }
+#3dModel{
+    max-width: 1500px!important;
+    max-height: 300px!important;
+    z-index:201;
+}

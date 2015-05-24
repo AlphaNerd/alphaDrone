@@ -13,6 +13,7 @@ var client
   , videoStream
   , paveStream
   , recording = false
+  , leapStream
   ;
 
 function blackbox(name, deps) {
@@ -33,7 +34,7 @@ function blackbox(name, deps) {
 
     // Listen to navdata and process them
     deps.client.on('navdata', function(data) {
-      console.log(JSON.stringify(data) + "\n");
+      //console.log(JSON.stringify(data) + "\n");
         _writeNavData(data);
     });
 
@@ -92,11 +93,7 @@ function _stop() {
       },
       work: function(my){
         my.leapmotion.on('hand', function(hand){
-          console.log("++++++============= New .on Event");
-          console.log(hand);
-          console.log("L/R: ",hand.palmX);
-          console.log("Elevation: ",hand.palmY);
-          console.log("F/B: ",hand.palmZ);
+          leapStream = hand;
         });
       }
     }).start();
